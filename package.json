@@ -1,0 +1,13 @@
+{
+  "name": "evolve-game",
+  "version": "1.0.0",
+  "description": "ElectroSpark — a small browser quiz game",
+  "main": "index.html",
+  "scripts": {
+    "preview": "python3 -m http.server 8000",
+    "start": "npx live-server --open=./index.html"
+  },
+  "keywords": ["quiz","game","javascript","html","css"],
+  "author": "",
+  "license": "MIT"
+}

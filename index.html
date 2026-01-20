@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electrospark Challenge | EVOLVE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="circuit-canvas"></canvas>
+
+    <button id="fs-mini-btn" onclick="toggleFullscreen()">⛶</button>
+
+    <div id="start-screen" class="screen active">
+        <div class="content-box premium-box">
+            <div class="premium-logo">EVOLVE</div>
+            <div class="line-separator"></div>
+            <h1 class="glow-text">ELECTROSPARK QUIZ CHALLENGE</h1>
+            <button class="action-btn" onclick="startGame()">INITIALIZE SYSTEM</button>
+            <p class="rules-hint">Score 7/10 to unlock the rewards.</p>
+        </div>
+    </div>
+
+    <div id="game-screen" class="screen">
+        <div class="hud">
+            <div class="hud-item">QUEST: <span id="q-num">1</span>/10</div>
+            <div id="timer-wrapper"><div id="timer-progress"></div></div>
+            <div class="hud-item">SCORE: <span id="score-num">0</span></div>
+        </div>
+        
+        <div class="quiz-container">
+            <h2 id="question-display">BOOTING...</h2>
+            <div id="options-grid"></div>
+        </div>
+    </div>
+
+    <div id="dash-screen" class="screen">
+        <div class="content-box result-box">
+            <h1 id="dash-status">SCAN COMPLETE</h1>
+            <div id="final-results"></div>
+            <p id="review-comment"></p>
+            <button class="action-btn" onclick="location.reload()">REBOOT SYSTEM</button>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
