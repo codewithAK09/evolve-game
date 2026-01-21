@@ -107,10 +107,19 @@ let qIndex = 0;
 let currentScore = 0;
 let timerPtr;
 
+function shuffleArray(arr) {
+    const shuffled = [...arr];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+}
+
 function startGame() {
     document.getElementById('start-screen').classList.remove('active');
     document.getElementById('game-screen').classList.add('active');
-    activeBatch = allQuestions.sort(() => 0.5 - Math.random()).slice(0, 10);
+    activeBatch = shuffleArray(allQuestions).slice(0, 10);
     renderQuestion();
 }
 
@@ -138,7 +147,7 @@ function runTimer() {
     timerPtr = setInterval(() => {
         timeLeft -= 2; bar.style.width = timeLeft + "%";
         if(timeLeft <= 0) { clearInterval(timerPtr); validate(null); }
-    }, 100);
+    }, 1000);
 }
 
 function validate(choice) {
@@ -171,10 +180,10 @@ function finishGame() {
     document.getElementById('final-results').innerHTML = `<h1 style="font-size:5rem">${currentScore * 10}% ACCURACY</h1>`;
     if(currentScore >= 7) {
         victoryMode = true;
-        document.getElementById('dash-status').innerText = "CANDY UNLOCKED 🍬";
+        document.getElementById('dash-status').innerText = "REWARD UNLOCKED 🍬";
         document.getElementById('review-comment').innerText = "SYSTEM SECURE. REWARD PROTOCOL ACTIVATED.";
     } else {
-        document.getElementById('dash-status').innerText = "SYSTEM FAILURE";
+        document.getElementById('dash-status').innerText = "YOU FAILED ❌";
         document.getElementById('review-comment').innerText = "MINIMUM 7/10 REQUIRED. RETRY SYSTEM.";
     }
 }
