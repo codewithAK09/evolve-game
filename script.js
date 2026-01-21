@@ -147,7 +147,7 @@ function runTimer() {
     timerPtr = setInterval(() => {
         timeLeft -= 2; bar.style.width = timeLeft + "%";
         if(timeLeft <= 0) { clearInterval(timerPtr); validate(null); }
-    }, 1000);
+    }, 300);
 }
 
 function validate(choice) {
@@ -178,12 +178,12 @@ function finishGame() {
     document.getElementById('game-screen').classList.remove('active');
     document.getElementById('dash-screen').classList.add('active');
     document.getElementById('final-results').innerHTML = `<h1 style="font-size:5rem">${currentScore * 10}% ACCURACY</h1>`;
-    if(currentScore >= 7) {
+    if(currentScore >= 8) {
         victoryMode = true;
         document.getElementById('dash-status').innerText = "REWARD UNLOCKED 🍬";
         document.getElementById('review-comment').innerText = "SYSTEM SECURE. REWARD PROTOCOL ACTIVATED.";
     } else {
         document.getElementById('dash-status').innerText = "YOU FAILED ❌";
-        document.getElementById('review-comment').innerText = "MINIMUM 7/10 REQUIRED. RETRY SYSTEM.";
+        document.getElementById('review-comment').innerText = "MINIMUM 8/10 REQUIRED. RETRY SYSTEM.";
     }
 }
