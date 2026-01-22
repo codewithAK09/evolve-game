@@ -1,3 +1,4 @@
+// --- 1. CORE ANIMATIONS & CANVAS ---
 const canvas = document.getElementById('circuit-canvas');
 const ctx = canvas.getContext('2d');
 let lines = [];
@@ -11,7 +12,7 @@ function resize() {
 window.onresize = resize;
 resize();
 
-// 1. PCB GRID LAYER
+// PCB GRID LAYER
 function drawPCBGrid() {
     ctx.strokeStyle = "rgba(0, 255, 65, 0.05)";
     ctx.lineWidth = 1;
@@ -24,7 +25,7 @@ function drawPCBGrid() {
     }
 }
 
-// 2. ORIGINAL PULSE LINES
+// ORIGINAL PULSE LINES (Falling Green Lines)
 class PulseLine {
     constructor() { this.reset(); }
     reset() {
@@ -45,7 +46,7 @@ class PulseLine {
     }
 }
 
-// 3. FULL PAGE SPARKLES
+// FULL PAGE SPARKLES (Fireworks)
 class Sparkle {
     constructor(x, y, color) {
         this.x = x; this.y = y;
@@ -68,6 +69,7 @@ class Sparkle {
     }
 }
 
+// Initialize pulse lines
 for(let i=0; i<70; i++) lines.push(new PulseLine());
 
 function triggerFullPageFireworks() {
@@ -96,7 +98,7 @@ function animate() {
 }
 animate();
 
-// --- GAME LOGIC ---
+// --- 2. GAME LOGIC ---
 function toggleFullscreen() {
     if (!document.fullscreenElement) document.documentElement.requestFullscreen();
     else document.exitFullscreen();
@@ -117,12 +119,19 @@ function shuffleArray(arr) {
 }
 
 function startGame() {
+    if (typeof allQuestions === 'undefined' || allQuestions.length === 0) {
+        console.error("Questions list is missing or empty!");
+        return;
+    }
+    
     document.getElementById('start-screen').classList.remove('active');
     document.getElementById('game-screen').classList.add('active');
+    
     qIndex = 0;
     currentScore = 0;
+    victoryMode = false; 
     document.getElementById('score-num').innerText = currentScore;
-    // pick up to 10 random unique questions (or fewer if not available)
+    
     const count = Math.min(10, allQuestions.length);
     activeBatch = shuffleArray(allQuestions).slice(0, count);
     renderQuestion();
@@ -130,11 +139,14 @@ function startGame() {
 
 function renderQuestion() {
     if (qIndex >= activeBatch.length) return finishGame();
+    
     document.getElementById('q-num').innerText = qIndex + 1;
     const data = activeBatch[qIndex];
     document.getElementById('question-display').innerText = data.q;
+    
     const grid = document.getElementById('options-grid');
     grid.innerHTML = "";
+    
     data.options.forEach(opt => {
         const btn = document.createElement('button');
         btn.className = 'opt-btn';
@@ -150,9 +162,11 @@ function runTimer() {
     const bar = document.getElementById('timer-progress');
     clearInterval(timerPtr);
     timerPtr = setInterval(() => {
-        timeLeft -= 2; bar.style.width = timeLeft + "%";
+        timeLeft -= 2; 
+        bar.style.width = timeLeft + "%";
+        // 100ms interval creates exactly a 5-second timer
         if(timeLeft <= 0) { clearInterval(timerPtr); validate(null); }
-    }, 150);
+    }, 100);
 }
 
 function validate(choice) {
@@ -162,11 +176,12 @@ function validate(choice) {
     if(choice === correctAns) {
         currentScore++;
         document.getElementById('score-num').innerText = currentScore;
-        showFeedback('CORRECT', '⚡', 'correct-msg'); // RE-ADDED
+        showFeedback('CORRECT', '⚡', 'correct-msg');
         triggerFullPageFireworks();
     } else {
-        showFeedback('WRONG', '⚠️', 'wrong-msg'); // RE-ADDED
+        showFeedback('WRONG', '⚠️', 'wrong-msg');
     }
+    
     qIndex++;
     setTimeout(renderQuestion, 1000);
 }
@@ -183,6 +198,7 @@ function finishGame() {
     document.getElementById('game-screen').classList.remove('active');
     document.getElementById('dash-screen').classList.add('active');
     document.getElementById('final-results').innerHTML = `<h1 style="font-size:5rem">${currentScore * 10}% ACCURACY</h1>`;
+    
     if(currentScore >= 8) {
         victoryMode = true;
         document.getElementById('dash-status').innerText = "REWARD UNLOCKED 🍬";
