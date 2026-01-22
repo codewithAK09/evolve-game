@@ -1,21 +1,4 @@
 const allQuestions = [
-    // --- ADVANCED ELECTRONICS & CIRCUIT THEORY ---
-    { q: "A 5-band resistor: Yellow, Violet, Black, Orange, Brown. Value?", a: "470 kΩ 1%", options: ["47 kΩ 5%", "470 kΩ 1%", "4.7 MΩ 1%", "470 Ω 2%"] },
-    { q: "BJT circuit: Ib = 25uA, Beta = 120. What is the exact Emitter Current (Ie)?", a: "3.025 mA", options: ["3.000 mA", "3.025 mA", "2.975 mA", "3.250 mA"] },
-    { q: "PIV of a diode in a center-tapped rectifier with 24V RMS secondary?", a: "67.88V", options: ["33.94V", "67.88V", "24V", "48V"] },
-    { q: "Quality Factor (Q) of a series RLC with R=10Ω, L=5mH, C=2uF?", a: "5.0", options: ["0.5", "5.0", "50.0", "2.5"] },
-    { q: "Voltage across 3uF cap in series with 6uF cap connected to 10V DC?", a: "6.67V", options: ["3.33V", "6.67V", "5.00V", "10.0V"] },
-    { q: "Resonant frequency of a circuit with L=2mH and C=200pF?", a: "251.6 kHz", options: ["25.1 kHz", "159.2 kHz", "251.6 kHz", "503.2 kHz"] },
-    { q: "What is the Ripple Factor of an ideal Half-Wave Rectifier?", a: "1.21", options: ["0.48", "1.21", "0.81", "1.11"] },
-    { q: "Binary subtraction 00001101 - 00010100 in 8-bit 2's Complement?", a: "11111001", options: ["11111001", "00000111", "11111010", "10000111"] },
-    { q: "The 'Slew Rate' of an Op-Amp is measured in?", a: "V/μs", options: ["V/s", "A/μs", "V/μs", "dB"] },
-    { q: "Number of NAND gates required to implement an XOR gate?", a: "4", options: ["2", "3", "4", "5"] },
-    { q: "Internal resistance of an ideal Current Source?", a: "Infinite", options: ["Zero", "100 Ω", "Infinite", "1 MΩ"] },
-    { q: "Common Mode Rejection Ratio (CMRR) of an ideal Op-Amp?", a: "Infinite", options: ["100 dB", "0", "Infinite", "120 dB"] },
-    { q: "Time constant (τ) of an RC circuit with R=47kΩ and C=100nF?", a: "4.7 ms", options: ["4.7 ms", "47 ms", "0.47 ms", "470 us"] },
-    { q: "If β = 99, what is the value of α (Alpha) for the transistor?", a: "0.99", options: ["0.90", "0.99", "1.00", "0.01"] },
-    { q: "Which coupling provides maximum power gain in amplifiers?", a: "Transformer", options: ["RC", "Direct", "Transformer", "Impedance"] },
-
     // --- MATHEMATICAL REASONING (TRAPS & QUANT) ---
     { q: "Angle between clock hands at 3:25?", a: "47.5°", options: ["30°", "47.5°", "60°", "52.5°"] },
     { q: "Probability that a sum of 5 is rolled with three fair dice?", a: "6/216", options: ["1/36", "6/216", "4/216", "3/216"] },
@@ -49,13 +32,80 @@ const allQuestions = [
 
     // --- PHYSICS & ENERGY EDGE CASES ---
     { q: "If the radius of Earth is halved but mass is constant, what happens to 'g'?", a: "Increases 4x", options: ["Doubles", "Increases 4x", "Halves", "Constant"] },
-    { q: "Refractive index of water is 1.33. Speed of light in water?", a: "2.25 x 10^8 m/s", options: ["3 x 10^8 m/s", "2.25 x 10^8 m/s", "1.5 x 10^8 m/s", "2 x 10^8 m/s"] },
-    { q: "Energy stored in a 10uF capacitor charged to 100V?", a: "0.05 J", options: ["1 J", "0.5 J", "0.05 J", "0.005 J"] },
-    { q: "Bernoulli's principle is based on the law of conservation of?", a: "Energy", options: ["Mass", "Energy", "Momentum", "Pressure"] },
-    { q: "At what temperature are Celsius and Fahrenheit scales equal?", a: "-40°", options: ["0°", "32°", "-40°", "100°"] },
-    { q: "Unit of Magnetic Flux?", a: "Weber", options: ["Tesla", "Weber", "Henry", "Gauss"] },
-    { q: "The escape velocity from Earth's surface is approx?", a: "11.2 km/s", options: ["9.8 km/s", "11.2 km/s", "42 km/s", "7 km/s"] },
-    { q: "If the power of a lens is +2.5D, what is its focal length?", a: "40 cm", options: ["25 cm", "40 cm", "50 cm", "10 cm"] },
-    { q: "Resistance of an ideal Ammeter should be?", a: "Zero", options: ["Zero", "Infinite", "1 Ω", "100 Ω"] },
-    { q: "What is the primary charge carrier in P-type semiconductors?", a: "Holes", options: ["Electrons", "Holes", "Protons", "Neutrons"] }
+    { q: "Which space agency launched the 'LUPEX' mission to the lunar south pole in 2025?", a: "ISRO & JAXA", options: ["NASA", "ISRO & JAXA", "ESA", "Roscosmos"] },
+    { q: "What is the name of the world's first commercial space station module launched in late 2025?", a: "Axiom Hub", options: ["Axiom Hub", "Starlab", "Orbital Reef", "Gateway"] },
+    { q: "Which element's isotope was successfully mined by the Chang'e-8 mission in 2025?", a: "Helium-3", options: ["Thorium", "Helium-3", "Lithium", "Uranium"] },
+    { q: "In 2026, which country became the first to implement a 'Global AI Sovereign Wealth Fund'?", a: "UAE", options: ["USA", "China", "UAE", "Saudi Arabia"] },
+
+    // --- GEOPOLITICS & ECONOMICS ---
+    { q: "Which nation chaired the 2025 BRICS summit where 5 new members were officially integrated?", a: "Brazil", options: ["Russia", "Brazil", "South Africa", "India"] },
+    { q: "The 'CHIPS Act 2.0' (2025) primarily focuses on which technology?", a: "2nm Lithography", options: ["Quantum Computing", "2nm Lithography", "6G Networks", "Solid State Batteries"] },
+    { q: "Which currency officially overtook the Euro in global SWIFT payments in Q3 2025?", a: "Yuan (CNY)", options: ["Yuan (CNY)", "Yen (JPY)", "Pound (GBP)", "None"] },
+
+    // --- ENVIRONMENTAL TECH ---
+    { q: "Where was the world's largest 'Carbon Capture' plant, 'Mammoth 2', commissioned in 2025?", a: "Iceland", options: ["Norway", "Iceland", "Canada", "USA"] },
+    { q: "Which country hosted COP30 in 2025, focusing on the 'Amazon Protection Fund'?", a: "Brazil", options: ["Brazil", "Egypt", "UAE", "Australia"] },
+
+    // --- MISC TOUGH GK ---
+    { q: "Who was appointed as the first-ever 'Global Envoy for AI Safety' by the UN in late 2025?", a: "Demis Hassabis", options: ["Sam Altman", "Demis Hassabis", "Geoffrey Hinton", "Fei-Fei Li"] },
+    { q: "The 2026 Winter Olympics (Milano Cortina) introduced which new sport?", a: "Ski Mountaineering", options: ["Padel", "Ski Mountaineering", "Cricket", "Squash"] },
+    { q: "What is the pinch-off voltage of a JFET if Vgs(off) is -4V and Vgs is -2V?", a: "2V", options: ["2V", "4V", "-6V", "8V"] },
+    { q: "Duty cycle of a square wave where 'on' time is 2ms and 'off' time is 8ms?", a: "20%", options: ["25%", "20%", "40%", "80%"] },
+    { q: "Number of selection lines for a 1-to-32 Demultiplexer?", a: "5", options: ["4", "5", "16", "32"] },
+    { q: "The bandwidth of an amplifier with gain 100 and Gain-Bandwidth Product 1MHz?", a: "10 kHz", options: ["100 kHz", "10 kHz", "1 MHz", "1 kHz"] },
+    { q: "Equivalent resistance of an infinite ladder of 1Ω resistors?", a: "1.618 Ω", options: ["1 Ω", "2 Ω", "1.618 Ω", "0.5 Ω"] },
+    { q: "Phase difference between V and I in a purely capacitive circuit?", a: "90° lagging V", options: ["90° leading V", "90° lagging V", "0°", "180°"] },
+    { q: "Voltage gain of an Op-Amp in non-inverting mode with Rf=10k and R1=2k?", a: "6", options: ["5", "6", "-5", "11"] },
+    { q: "Conversion time of an 8-bit Successive Approximation ADC at 1MHz clock?", a: "8 μs", options: ["256 μs", "8 μs", "1 μs", "0.5 μs"] },
+    { q: "A 4-bit R-2R ladder DAC uses Vref=10V. Smallest output change (LSB)?", a: "0.625V", options: ["0.625V", "1.25V", "2.5V", "0.312V"] },
+    { q: "What is the thermal voltage (Vt) at room temperature (300K) approx?", a: "26 mV", options: ["26 mV", "0.7 V", "1 V", "12 mV"] },
+
+    // --- MATHEMATICAL REASONING & APTITUDE ---
+    { q: "A gardener plants 10 trees in 5 rows with 4 trees in each row. How?", a: "Star shape", options: ["Circle", "Star shape", "Square", "Impossible"] },
+    { q: "If 1=5, 2=25, 3=125, 4=625, then 5=?", a: "1", options: ["3125", "1", "25", "5"] },
+    { q: "A clock loses 10 mins every hour. It was set right at 12 PM. Time at real 6 PM?", a: "5 PM", options: ["5 PM", "5:10 PM", "6:50 PM", "7 PM"] },
+    { q: "Sum of interior angles of a regular Hexagon?", a: "720°", options: ["540°", "720°", "360°", "1080°"] },
+    { q: "A boat goes 10km/h in still water. River speed 2km/h. Speed upstream?", a: "8 km/h", options: ["12 km/h", "8 km/h", "10 km/h", "6 km/h"] },
+    { q: "If 'POWER' is 77, what is 'WORK'?", a: "67", options: ["46", "67", "57", "68"] },
+    { q: "Difference between the largest and smallest 3-digit numbers using 0, 2, 4?", a: "216", options: ["420", "216", "220", "440"] },
+    { q: "Probability of picking a non-vowel from the word 'ELECTRONICS'?", a: "7/11", options: ["4/11", "7/11", "1/2", "6/11"] },
+    { q: "A is 300% of B. What percentage of A is B?", a: "33.33%", options: ["30%", "33.33%", "300%", "66.66%"] },
+    { q: "Total number of squares on a standard Chessboard?", a: "204", options: ["64", "204", "128", "256"] },
+
+    // --- COMPUTER SCIENCE & DATA STRUCTURES ---
+    { q: "Time complexity of building a Heap from an unsorted array of size N?", a: "O(N)", options: ["O(N log N)", "O(log N)", "O(N)", "O(N^2)"] },
+    { q: "Which data structure is used to implement Recursion?", a: "Stack", options: ["Queue", "Stack", "Linked List", "Tree"] },
+    { q: "Number of edges in a complete graph with 10 vertices?", a: "45", options: ["90", "100", "45", "10"] },
+    { q: "Default port for HTTP?", a: "80", options: ["443", "80", "21", "8080"] },
+    { q: "Which scheduling algorithm can lead to Starvation?", a: "Priority", options: ["Round Robin", "Priority", "FIFO", "Shortest Job First"] },
+
+    // --- BLOOD RELATIONS & SOCIAL LOGIC ---
+    { q: "Looking at a portrait, X says: 'She is the mother of my wife's mother-in-law.' Who?", a: "X's Grandmother", options: ["X's Mother", "X's Grandmother", "X's Mother-in-law", "None"] },
+    { q: "A family has a man, wife, 3 sons and their wives, and 2 children each. Total?", a: "14", options: ["17", "14", "11", "20"] },
+    { q: "A is the uncle of B, who is the daughter of C, and C is the sister-in-law of A. A is C's?", a: "Brother-in-law", options: ["Brother", "Brother-in-law", "Husband", "Father"] },
+    { q: "M is the son of P. Q is the granddaughter of O, who is the husband of P. M is Q's?", a: "Father", options: ["Uncle", "Father", "Cousin", "Brother"] },
+    { q: "Introducing a girl, a boy said: 'She is the daughter of the mother of my mother.' Who?", a: "Maternal Aunt", options: ["Sister", "Mother", "Maternal Aunt", "Cousin"] },
+
+    // --- PHYSICS & ENERGY ---
+    { q: "A 100W bulb is on for 10 hours. Electrical energy consumed in kWh?", a: "1 kWh", options: ["10 kWh", "1 kWh", "0.1 kWh", "100 kWh"] },
+    { q: "The work done in moving a charge of 2C across a 12V potential is?", a: "24 J", options: ["6 J", "24 J", "10 J", "0.16 J"] },
+    { q: "Which color of light deviates the least through a prism?", a: "Red", options: ["Violet", "Blue", "Red", "Yellow"] },
+    { q: "The wavelength of a 1GHz signal in air is approximately?", a: "30 cm", options: ["3 m", "30 cm", "3 cm", "300 m"] },
+
+    // --- TRAPS & RIDDLES ---
+    { q: "How many letters are in 'The Alphabet'?", a: "11", options: ["26", "24", "11", "8"] },
+    { q: "What is seen in the middle of March and April that can’t be seen at the start?", a: "The letter R", options: ["Spring", "Rain", "The letter R", "Sun"] },
+    { q: "A plane crashes exactly on the border. Where do you bury the survivors?", a: "Don't bury survivors", options: ["Both sides", "Nowhere", "Don't bury survivors", "In the air"] },
+    { q: "What is 3/7 chicken, 2/3 cat, and 2/4 goat?", a: "Chicago", options: ["Animal", "Chicago", "Chimera", "Chaos"] },
+
+    // --- FAST MATH & BINARY ---
+    { q: "Value of 1011 (Binary) + 1101 (Binary)?", a: "11000", options: ["11000", "10110", "11111", "10001"] },
+    { q: "Number of zeros in one Billion (standard)?", a: "9", options: ["6", "9", "12", "8"] },
+    { q: "Binary 11111111 (8 bits) in Decimal?", a: "255", options: ["256", "255", "127", "254"] },
+
+    // --- MIXED FINAL PROTOCOL ---
+    { q: "Who is the 'Father of Electronics'?", a: "Michael Faraday", options: ["Tesla", "Edison", "Faraday", "Maxwell"] },
+    { q: "Which logic gate is known as a 'Coincidence Detector'?", a: "AND", options: ["OR", "AND", "NOT", "XOR"] },
+    { q: "What is the efficiency of a Transformer at full load approx?", a: "95-98%", options: ["50%", "75%", "95-98%", "100%"] },
+    { q: "What does BIOS stand for?", a: "Basic Input Output System", options: ["Binary Input Output System", "Basic Input Output System", "Basic Integrated OS", "None"] }
 ];
