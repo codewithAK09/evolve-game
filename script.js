@@ -119,12 +119,17 @@ function shuffleArray(arr) {
 function startGame() {
     document.getElementById('start-screen').classList.remove('active');
     document.getElementById('game-screen').classList.add('active');
-    activeBatch = shuffleArray(allQuestions).slice(0, 10);
+    qIndex = 0;
+    currentScore = 0;
+    document.getElementById('score-num').innerText = currentScore;
+    // pick up to 10 random unique questions (or fewer if not available)
+    const count = Math.min(10, allQuestions.length);
+    activeBatch = shuffleArray(allQuestions).slice(0, count);
     renderQuestion();
 }
 
 function renderQuestion() {
-    if(qIndex >= 10) return finishGame();
+    if (qIndex >= activeBatch.length) return finishGame();
     document.getElementById('q-num').innerText = qIndex + 1;
     const data = activeBatch[qIndex];
     document.getElementById('question-display').innerText = data.q;
@@ -147,7 +152,7 @@ function runTimer() {
     timerPtr = setInterval(() => {
         timeLeft -= 2; bar.style.width = timeLeft + "%";
         if(timeLeft <= 0) { clearInterval(timerPtr); validate(null); }
-    }, 300);
+    }, 150);
 }
 
 function validate(choice) {
