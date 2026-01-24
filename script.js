@@ -160,17 +160,16 @@ function renderQuestion() {
     runTimer();
 }
 
-// 20-SECOND TIMER LOGIC WITH BOUNDS CORRECTION
+// 10-SECOND TIMER LOGIC
 function runTimer() {
     let timeLeft = 100;
     const bar = document.getElementById('timer-progress');
     clearInterval(timerPtr);
     
     timerPtr = setInterval(() => {
-        // Subtract 0.5% every 100ms = 100% in 20,000ms (20s)
-        timeLeft -= 0.5; 
+        // Subtract 1% every 100ms = 100% in 10,000ms (10s)
+        timeLeft -= 1; 
         
-        // Use Math.max to prevent the bar from crossing the screen (negative width)
         const currentWidth = Math.max(0, timeLeft);
         bar.style.width = currentWidth + "%";
         
