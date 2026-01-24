@@ -158,7 +158,7 @@ function renderQuestion() {
 }
 
 function runTimer() {
-    let timeLeft = 200;
+    let timeLeft = 100;
     const bar = document.getElementById('timer-progress');
     clearInterval(timerPtr);
     timerPtr = setInterval(() => {
