@@ -158,7 +158,7 @@ function renderQuestion() {
 }
 
 function runTimer() {
-    let timeLeft = 100;
+    let timeLeft = 200;
     const bar = document.getElementById('timer-progress');
     clearInterval(timerPtr);
     timerPtr = setInterval(() => {
@@ -166,7 +166,7 @@ function runTimer() {
         bar.style.width = timeLeft + "%";
         // 100ms interval creates exactly a 5-second timer
         if(timeLeft <= 0) { clearInterval(timerPtr); validate(null); }
-    }, 100);
+    }, 200);
 }
 
 function validate(choice) {
