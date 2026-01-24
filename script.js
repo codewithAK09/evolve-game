@@ -42,9 +42,9 @@ class PulseLine {
     draw() {
         ctx.strokeStyle = `rgba(0, 255, 65, ${this.opacity})`;
         ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(this.x, this.y);
-        ctx.lineTo(this.x, this.y + this.len);
+        ctx.beginPath(); 
+        ctx.moveTo(this.x, this.y); 
+        ctx.lineTo(this.x, this.y + this.len); 
         ctx.stroke();
     }
 }
@@ -160,18 +160,23 @@ function renderQuestion() {
     runTimer();
 }
 
-/** 20-SECOND TIMER LOGIC **/
+// 20-SECOND TIMER LOGIC WITH BOUNDS CORRECTION
 function runTimer() {
     let timeLeft = 100;
     const bar = document.getElementById('timer-progress');
     clearInterval(timerPtr);
+    
     timerPtr = setInterval(() => {
         // Subtract 0.5% every 100ms = 100% in 20,000ms (20s)
         timeLeft -= 0.5; 
-        bar.style.width = timeLeft + "%";
+        
+        // Use Math.max to prevent the bar from crossing the screen (negative width)
+        const currentWidth = Math.max(0, timeLeft);
+        bar.style.width = currentWidth + "%";
         
         if(timeLeft <= 0) { 
             clearInterval(timerPtr); 
+            bar.style.width = "0%";
             validate(null); 
         }
     }, 100);
